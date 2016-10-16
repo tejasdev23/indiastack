@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+
+	</title>
+</head>
+<body>
+
+<script>
+xhr = new XMLHttpRequest();
+var url = " http://139.59.30.133:9090/auth/raw";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-type", "application/json");
+xhr.onreadystatechange = function () { 
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log("hello");
+		console.log(json);
+    }
+}
+var data = JSON.stringify(    {
+        "aadhaar-id": "554487846740",
+        "location": {
+            "type": "pincode",
+            "pincode": "400092"
+        },
+        "modality": "demo",
+        "certificate-type": "preprod",
+        "demographics": {
+            "name": {
+                "matching-strategy": "partial",
+                "name-value": "Rishabh",
+                "matching-value":"20"
+            }
+        }
+    } 
+	);
+xhr.send(data);
+</script>
+</body>
+</html>
